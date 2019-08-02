@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System;
 
 namespace DataAccess
 {
@@ -16,15 +17,20 @@ namespace DataAccess
             var reader = selectUser.ExecuteReader();
             while (reader.Read())
             {
+                var c = (int)reader["CategoryId"];
+                var id = (int)reader["id"];
+
+                var e = (User.Category)(c);
+
                 User u = new User
                 {
-                    Id = (int)reader["id"],
+                    Id = id,
                     Username = reader["username"] as string,
                     Email = reader["email"] as string,
                     Description = reader["description"] as string,
                     City = reader["City"] as string,
                     Street = reader["Street"] as string,
-                    CategoryId = (User.Category) reader["CategoryId"]
+                    CategoryId = e
                 };
                 usersList.Add(u);
             }
@@ -51,7 +57,7 @@ namespace DataAccess
                 user.Description = reader["DESCRIPTION"] as string;
                 user.City = reader["CITY"] as string;
                 user.Street = reader["STREET"] as string;
-                user.CategoryId = (User.Category)reader["CategoryId"];
+                user.CategoryId = (User.Category) ((int)reader["categoryid"]); // todo
             }
 
             sqlConnection.Close();

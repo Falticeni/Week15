@@ -40,7 +40,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Street)
-            </td>            
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryId)
             </td>
@@ -55,14 +55,16 @@
 </table>
 
 <p>
-
-
-
     @using (Html.BeginForm())
     {
         <strong>@Html.ActionLink("Create New User", "Add", "User")</strong>
     }
-   
-   
-
+</p>
+<p>
+    @{
+        for (int i = 1; i <= ViewBag.NumberOfPages; i += 10)
+        {
+            @Html.ActionLink($"{i / 10 % 10 + 1}", "Index", new { @id = i / 10 % 10 + 1 }, new { @class = "btn" })
+        }
+    }
 </p>
