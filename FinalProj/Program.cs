@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using FinalProj.Class;
+using Exercitiul1.Class;
 
-namespace FinalProj
+namespace Exercitiul1
 {
     class Program
     {

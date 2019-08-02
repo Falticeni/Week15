@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProj.Class
+namespace Exercitiul1.Class
 {
     public class ReadAndWriteFile
     {
